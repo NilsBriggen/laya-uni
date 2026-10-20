@@ -11,7 +11,7 @@ computer science, in German, English, French and Italian.
 
 ## Download
 
-The model is in the [releases](../../releases). Release `laya-uni-1` has these files:
+The model is in the [releases](../../releases). Release `laya-uni-1` has these files, plus `manifest.json`:
 
 | file | bytes | SHA-256 |
 |---|---|---|
@@ -23,6 +23,14 @@ The model is in the [releases](../../releases). Release `laya-uni-1` has these f
 The layout is Laya's own. To load it with the `laya` Python package, put the files back as
 `model.safetensors`, `rl_agent_config.json`, `encoder/config.json` and `tokenizer/tokenizer.json`.
 File Sorter has a native Rust port that gives the same probabilities to four decimals.
+
+## Updates
+
+File Sorter reads `releases/latest/download/manifest.json` from this repository once a day. When the
+newest release has a higher `version` than the model it has, it downloads that release's files, checks
+their SHA-256, switches over, and then deletes the old model. Each model is therefore its own release,
+and **published files are never replaced or deleted**. The manifest also carries the model's confidence
+thresholds (`min_probability`, `min_lead`), which are chosen per model.
 
 ## How it is asked
 
